@@ -1,0 +1,29 @@
+Options -Indexes
+DirectoryIndex index.php
+
+# Arquivos internos não são páginas do site
+<FilesMatch "^(config\.php|README\.md|LICENSE|\.gitignore|\.gitattributes|\.editorconfig)$">
+    Require all denied
+</FilesMatch>
+RedirectMatch 404 /\.(git|svn|idea|vscode)(/|$)
+RedirectMatch 404 ^/(inc|lang|cache)(/|$)
+
+# Links fixos de download: /download/windows, /download/linux…
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^download/([a-z-]+)/?$ download.php?f=$1 [L,QSA]
+</IfModule>
+
+# Compressão
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/css image/svg+xml
+</IfModule>
+
+# Cache: imagens 30 dias, CSS 1 dia, a página sempre revalida (versão nova aparece na hora)
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/png "access plus 30 days"
+    ExpiresByType image/webp "access plus 30 days"
+    ExpiresByType text/css "access plus 1 day"
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
