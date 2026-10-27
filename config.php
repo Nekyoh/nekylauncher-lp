@@ -16,7 +16,7 @@ return [
     'repo' => 'Nekyoh/nekylauncher',
 
     // Quanto tempo (segundos) guardar a resposta do GitHub antes de perguntar de novo.
-    // 10 min = no máximo 6 consultas por hora, bem abaixo do limite de 60 do GitHub.
+    // 30 min = no máximo 2 consultas por hora, bem abaixo do limite de 60 do GitHub.
     'cache_ttl' => 1800,
 
     // Opcional: token do GitHub (só leitura de repositórios públicos) para subir o limite
