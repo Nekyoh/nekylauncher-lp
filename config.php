@@ -7,6 +7,9 @@
  */
 return [
     'nome'    => 'NekyLauncher',
+    // Endereço público do site (usado no link canônico e no sitemap)
+    'url'     => 'https://launcher.nekyoh.tech',
+
     'autores' => ['Tekyoh', 'Nezoru'],
 
     // Repositório no GitHub de onde vêm a versão, os downloads e as novidades

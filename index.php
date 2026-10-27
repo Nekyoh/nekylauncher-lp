@@ -58,13 +58,17 @@ $duvidas = ['free', 'orig', 'warn', 'data', 'update', 'mac', 'bug'];
     <meta property="og:type" content="website">
     <meta property="og:title" content="<?= e(t('meta.title')) ?>">
     <meta property="og:description" content="<?= e(t('meta.desc')) ?>">
-    <meta property="og:image" content="assets/img/og.png">
+    <meta property="og:image" content="<?= e($CFG['url']) ?>/assets/img/og.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
     <link rel="icon" type="image/png" sizes="64x64" href="assets/img/icon-64.png">
     <link rel="apple-touch-icon" href="assets/img/icon-180.png">
+    <?php $escolhido = isset($_GET['lang'], $CFG['idiomas'][$_GET['lang']]) ? $_GET['lang'] : null; ?>
+    <link rel="canonical" href="<?= e($CFG['url'] . '/' . ($escolhido ? '?lang=' . $escolhido : '')) ?>">
     <?php foreach ($CFG['idiomas'] as $cod => $_): ?>
-    <link rel="alternate" hreflang="<?= e($cod) ?>" href="?lang=<?= e($cod) ?>">
+    <link rel="alternate" hreflang="<?= e($cod) ?>" href="<?= e($CFG['url']) ?>/?lang=<?= e($cod) ?>">
     <?php endforeach; ?>
+    <link rel="alternate" hreflang="x-default" href="<?= e($CFG['url']) ?>/">
+    <meta property="og:url" content="<?= e($CFG['url'] . '/' . ($escolhido ? '?lang=' . $escolhido : '')) ?>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
